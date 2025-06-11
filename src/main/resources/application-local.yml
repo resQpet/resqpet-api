@@ -1,0 +1,51 @@
+server:
+  jwt:
+    public-key: classpath:jwt.pub
+    private-key: classpath:jwt.key
+  servlet:
+    context-path: '/api/v1'
+  port: 8020
+spring:
+  application:
+    name: "@project.name@"
+    version: "@project.version@"
+  datasource:
+    url: jdbc:mysql://resqpet12345.mysql.database.azure.com:3306/resqpet
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: adminuser
+    password: FinalTDS*
+  jooq:
+    sql-dialect: MYSQL
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  sendgrid:
+    api-key: "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"
+aws:
+  access-key: "AKIAQHVAIZA47NGU2D6X"
+  secret-key: "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"
+  s3:
+    bucket: "resqpet.final.tds"
+app:
+  emails:
+    from: "resqpet.info@gmail.com"
+    sender: "resQpet"
+    base-path: "http://3.17.176.194:8020/api/v1"
+    api-key: ${spring.sendgrid.api-key}
+    templates:
+      account-recover:
+        subject: "Recuperación de Contraseña"
+        template: "d-90ee41513e7e438aa04635175c9eb247"
+        redirect-uri: "${app.emails.base-path}/auth/recover?token="
+logging:
+  level:
+    org.hibernate: warn
+    org.hibernate.orm.connections.pooling: warn

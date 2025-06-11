@@ -1,0 +1,52 @@
+server:
+  jwt:
+    public-key: classpath:jwt.pub
+    private-key: classpath:jwt.key
+  servlet:
+    context-path: '/api/v1'
+  port: 5000
+  address: 0.0.0.0
+spring:
+  application:
+    name: "@project.name@"
+    version: "@project.version@"
+  datasource:
+    url: jdbc:mysql://resqpet2.cyzgomswgojf.us-east-1.rds.amazonaws.com:3306/RESQPET
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: admin
+    password: Admin2323.
+  jooq:
+    sql-dialect: MYSQL
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  sendgrid:
+    api-key: "SG.3"
+aws:
+  access-key: "AKIAQHVAIZA47NGU2D6X"
+  secret-key: "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"
+  s3:
+    bucket: "bucket.final.tds"
+app:
+  emails:
+    from: "info@rodal.tech"
+    sender: "AISec by Rodaltech SRL"
+    base-path: "https://aisec-dev.rodal.tech"
+    api-key: ${spring.sendgrid.api-key}
+    templates:
+      account-recover:
+        subject: "Recuperar de Contraseña"
+        template: "d-18b7cce136a240e8987074569e72aeaf"
+        redirect-uri: "${app.emails.base-path}/auth/recover?token="
+logging:
+  level:
+    org.hibernate: warn
+    org.hibernate.orm.connections.pooling: warn

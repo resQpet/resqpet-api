@@ -1,0 +1,46 @@
+package service.domain.entity.foundation;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.ColumnDefault;
+import service.domain.entity.BaseEntity;
+
+@Getter
+@Setter
+@Entity
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@Table(name = "foundation_evidence", schema = "resqpet")
+public class FoundationEvidence extends BaseEntity {
+
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "FOUNDATION_ID", nullable = false)
+    private Foundation foundation;
+
+    @Size(max = 255)
+    @NotNull
+    @Column(name = "FILE_URL", nullable = false)
+    private String fileUrl;
+
+    @ColumnDefault("'DOCUMENT'")
+    @Lob
+    @Column(name = "FILE_TYPE")
+    private String fileType;
+
+}
