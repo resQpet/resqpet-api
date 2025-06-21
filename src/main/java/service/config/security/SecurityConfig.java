@@ -24,6 +24,7 @@ public class SecurityConfig {
 
     private final JwtDecoder decoder;
     private final UserDetailsService userDetailsService;
+    private final LocationFilter locationFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -40,7 +41,7 @@ public class SecurityConfig {
                         .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                         .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
                 )
-                .addFilterBefore(new LocationFilter(), BasicAuthenticationFilter.class);
+                .addFilterBefore(this.locationFilter, BasicAuthenticationFilter.class);
 
         return http.build();
     }
