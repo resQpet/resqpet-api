@@ -24,7 +24,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "foundation", schema = "resqpet")
+@Table(name = "foundation")
 public class Foundation extends BaseEntity {
 
     @Size(max = 100)

@@ -29,7 +29,7 @@ import java.util.Optional;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "USER")
+@Table(name = "`user`")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User extends BaseEntity {
 
@@ -76,7 +76,7 @@ public class User extends BaseEntity {
     private Role role;
 
     @ToString.Exclude
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private UserInfo info;
 
 

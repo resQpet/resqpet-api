@@ -2,7 +2,7 @@ package service.domain.constants;
 
 
 public class AuthConstants {
-    public static final String[] PUBLIC_URLS = {"/", "/users/register"};
+    public static final String[] PUBLIC_URLS = {"/"};
     public static final String RNC_HEADER = "X-Auth-Company";
     public static final String[] ALLOWED_URLS = {
             "/",

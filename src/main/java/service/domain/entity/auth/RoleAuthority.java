@@ -20,7 +20,7 @@ import service.domain.entity.BaseEntity;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ROLE_AUTHORITY", schema = "resqpet")
+@Table(name = "role_authority")
 public class RoleAuthority extends BaseEntity {
 
     @NotNull

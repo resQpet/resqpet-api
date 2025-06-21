@@ -11,10 +11,10 @@ spring:
     name: "@project.name@"
     version: "@project.version@"
   datasource:
-    url: jdbc:mysql://resqpet2.cyzgomswgojf.us-east-1.rds.amazonaws.com:3306/RESQPET
+    url: jdbc:mysql://resqpet.c6pack4a6in2.us-east-1.rds.amazonaws.com:3306/RESQPET
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: admin
-    password: Admin2323.
+    password: Resqpet010203.
   jooq:
     sql-dialect: MYSQL
   jpa:

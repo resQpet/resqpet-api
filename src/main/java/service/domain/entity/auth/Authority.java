@@ -18,7 +18,7 @@ import service.domain.entity.BaseEntity;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "AUTHORITY")
+@Table(name = "authority")
 public class Authority extends BaseEntity {
 
     public static final String FIELD_NAME = "name";

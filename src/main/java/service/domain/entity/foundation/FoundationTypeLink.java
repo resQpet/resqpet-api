@@ -21,7 +21,7 @@ import service.domain.entity.BaseEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "foundation_type_link", schema = "resqpet")
+@Table(name = "foundation_type_link")
 public class FoundationTypeLink extends BaseEntity {
 
     @NotNull

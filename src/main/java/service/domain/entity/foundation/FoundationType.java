@@ -19,7 +19,7 @@ import service.domain.entity.BaseEntity;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "foundation_type", schema = "resqpet")
+@Table(name = "foundation_type")
 public class FoundationType extends BaseEntity {
 
     @Size(max = 100)

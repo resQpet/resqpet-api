@@ -24,7 +24,7 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ROLE", schema = "resqpet")
+@Table(name = "role")
 public class Role extends BaseEntity {
 
     public static final String FIELD_NAME = "name";

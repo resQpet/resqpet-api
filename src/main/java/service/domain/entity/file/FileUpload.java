@@ -20,7 +20,7 @@ import service.domain.entity.user.User;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "FILE_UPLOAD")
+@Table(name = "file_upload")
 @EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FileUpload extends BaseEntity {

@@ -27,7 +27,7 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "foundation_user_role", schema = "resqpet")
+@Table(name = "foundation_user_role")
 public class FoundationUserRole extends BaseEntity {
 
     @NotNull
