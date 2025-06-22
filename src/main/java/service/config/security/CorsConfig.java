@@ -28,7 +28,7 @@ public class CorsConfig implements Filter {
     private static final String ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods";
     private static final String ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin";
     private static final String ALLOW_METHODS = "POST, GET, PUT, PATCH, OPTIONS, DELETE";
-    private static final String SEC_HEADERS = "X-Requested-With, Content-Type, Authorization, Credential, X-XSRF-TOKEN, X-Auth-Company";
+    private static final String SEC_HEADERS = "X-Requested-With, Content-Type, Authorization, Credential, X-XSRF-TOKEN, X-Auth-Company, X-Latitude, X-Longitude";
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
