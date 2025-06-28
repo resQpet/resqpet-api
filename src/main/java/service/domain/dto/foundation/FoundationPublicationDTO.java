@@ -10,6 +10,7 @@ import service.domain.dto.BaseDTO;
 import service.domain.entity.foundation.FoundationPublication;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -25,6 +26,7 @@ public class FoundationPublicationDTO extends BaseDTO {
     private String content;
     private String imageUrl;
     private LocalDate eventDate;
+    private List<FoundationPublicationImageDTO> images;
 
     public FoundationPublicationDTO(FoundationPublication publication) {
         super(publication);
@@ -32,7 +34,7 @@ public class FoundationPublicationDTO extends BaseDTO {
             this.foundation = new FoundationDTO(publication.getFoundation());
             this.title = publication.getTitle();
             this.content = publication.getContent();
-            this.imageUrl = publication.getImageUrl();
+            this.images = publication.getFoundationPublicationImages().stream().map(FoundationPublicationImageDTO::new).toList();
             this.eventDate = publication.getEventDate();
         }
     }
