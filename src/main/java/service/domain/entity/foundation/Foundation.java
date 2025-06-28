@@ -3,19 +3,24 @@ package service.domain.entity.foundation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Lob;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.ColumnDefault;
 import service.domain.entity.BaseEntity;
+import service.domain.types.FoundationStatus;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -51,9 +56,12 @@ public class Foundation extends BaseEntity {
     @Column(name = "MEMBER_COUNT")
     private Integer memberCount;
 
-    @ColumnDefault("'ACTIVE'")
-    @Lob
     @Column(name = "STATUS")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private FoundationStatus status;
+
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "foundation")
+    private List<FoundationLocation> locations;
 
 }

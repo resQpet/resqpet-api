@@ -34,6 +34,10 @@ aws:
   secret-key: "1LEz1i3lnPM1wxWt/uStbItxwgAdDs2IsF6/XA5i"
   s3:
     bucket: "resqpet.final.tds"
+ia:
+  api:
+    url: "https://openrouter.ai/api/v1/chat/completions"
+    key: "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"
 app:
   emails:
     from: "resqpet.info@gmail.com"
