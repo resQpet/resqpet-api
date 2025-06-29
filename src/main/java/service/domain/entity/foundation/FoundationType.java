@@ -22,6 +22,9 @@ import service.domain.entity.BaseEntity;
 @Table(name = "foundation_type")
 public class FoundationType extends BaseEntity {
 
+    public static final String FIELD_NAME = "name";
+    public static final String FIELD_DESCRIPTION = "description";
+
     @Size(max = 100)
     @Column(name = "NAME", length = 100)
     private String name;
