@@ -21,7 +21,7 @@ import java.util.Objects;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class FoundationPublicationDTO extends BaseDTO {
 
-    private FoundationDTO foundation;
+    private BaseFoundationDTO foundation;
     private String title;
     private String content;
     private String imageUrl;
@@ -31,7 +31,7 @@ public class FoundationPublicationDTO extends BaseDTO {
     public FoundationPublicationDTO(FoundationPublication publication) {
         super(publication);
         if (Objects.nonNull(publication)) {
-            this.foundation = new FoundationDTO(publication.getFoundation());
+            this.foundation = new BaseFoundationDTO(publication.getFoundation());
             this.title = publication.getTitle();
             this.content = publication.getContent();
             this.images = publication.getFoundationPublicationImages().stream().map(FoundationPublicationImageDTO::new).toList();

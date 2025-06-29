@@ -3,9 +3,10 @@ package service.domain.entity.foundation;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
@@ -14,11 +15,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.ColumnDefault;
 import service.domain.entity.BaseEntity;
 import service.domain.entity.user.User;
+import service.domain.types.foundation.FoundationRoleType;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -41,13 +42,11 @@ public class FoundationUserRole extends BaseEntity {
     private User user;
 
     @NotNull
-    @ColumnDefault("'VIEWER'")
-    @Lob
+    @Enumerated(EnumType.STRING)
     @Column(name = "ROLE", nullable = false)
-    private String role;
+    private FoundationRoleType role;
 
-    @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "ASSIGNED_AT")
-    private Instant assignedAt;
+    private LocalDateTime assignedAt;
 
 }

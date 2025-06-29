@@ -4,4 +4,7 @@ import service.domain.entity.foundation.Foundation;
 import service.domain.repository.BaseRepository;
 
 public interface FoundationRepository extends BaseRepository<Foundation> {
+
+    boolean existsByName(String name);
+
 }

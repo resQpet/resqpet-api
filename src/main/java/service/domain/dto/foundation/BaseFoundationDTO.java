@@ -11,7 +11,6 @@ import service.domain.entity.foundation.Foundation;
 import service.domain.types.FoundationStatus;
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -20,7 +19,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class FoundationDTO extends BaseDTO {
+public class BaseFoundationDTO extends BaseDTO {
 
     private String name;
     private LocalDate foundedDate;
@@ -29,9 +28,8 @@ public class FoundationDTO extends BaseDTO {
     private String website;
     private Integer memberCount;
     private FoundationStatus status;
-    private List<FoundationLocationDTO> locations;
 
-    public FoundationDTO(Foundation entity) {
+    public BaseFoundationDTO(Foundation entity) {
         super(entity);
         if (Objects.nonNull(entity)) {
             this.name = entity.getName();
@@ -41,7 +39,6 @@ public class FoundationDTO extends BaseDTO {
             this.website = entity.getWebsite();
             this.memberCount = entity.getMemberCount();
             this.status = entity.getStatus();
-            this.locations = entity.getLocations().stream().map(FoundationLocationDTO::new).toList();
         }
     }
 }
