@@ -32,6 +32,9 @@ import java.util.List;
 @Table(name = "foundation")
 public class Foundation extends BaseEntity {
 
+    public static final String FIELD_NAME = "name";
+    public static final String FIELD_STATUS = "status";
+
     @Size(max = 100)
     @NotNull
     @Column(name = "NAME", nullable = false, length = 100)
