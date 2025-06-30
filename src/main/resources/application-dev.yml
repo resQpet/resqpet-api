@@ -29,7 +29,7 @@ spring:
     multipart:
       max-file-size: 5MB
   sendgrid:
-    api-key: "SG.3"
+    api-key: "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"
 aws:
   access-key: "AKIAQHVAIZA47NGU2D6X"
   secret-key: "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"

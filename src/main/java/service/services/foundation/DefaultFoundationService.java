@@ -9,6 +9,7 @@ import service.domain.entity.user.User;
 import service.domain.exceptions.DuplicateException;
 import service.domain.repository.foundation.FoundationRepository;
 import service.domain.request.foundation.FoundationRequest;
+import service.domain.types.FoundationStatus;
 import service.services.DefaultBaseService;
 import service.services.foundation.evidence.FoundationEvidenceService;
 import service.services.foundation.location.FoundationLocationService;
@@ -44,6 +45,7 @@ public class DefaultFoundationService extends DefaultBaseService<Foundation> imp
                 .email(request.getEmail())
                 .phone(request.getPhone())
                 .website(request.getWebsite())
+                .status(FoundationStatus.INACTIVE)
                 .build();
         this.create(foundation);
 

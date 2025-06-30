@@ -15,6 +15,8 @@ import service.domain.dto.foundation.BaseFoundationDTO;
 import service.domain.dto.foundation.SimpleFoundationDTO;
 import service.domain.entity.user.User;
 import service.domain.request.foundation.FoundationRequest;
+import service.domain.spec.foundation.FoundationSpec;
+import service.domain.spec.search.foundation.FoundationSearchSpec;
 import service.services.foundation.FoundationService;
 
 @RestController
@@ -25,12 +27,18 @@ public class FoundationResource {
     private final FoundationService service;
 
     @GetMapping
-    public ResponseEntity<Page<SimpleFoundationDTO>> list(Pageable pageable) {
-        return ResponseEntity.ok(this.service.findAll(pageable).map(SimpleFoundationDTO::new));
+    public ResponseEntity<Page<SimpleFoundationDTO>> list(FoundationSpec spec, Pageable pageable) {
+        return ResponseEntity.ok(this.service.findAll(spec, pageable).map(SimpleFoundationDTO::new));
+    }
+
+    @GetMapping("search")
+    public ResponseEntity<Page<SimpleFoundationDTO>> search(FoundationSearchSpec spec, Pageable pageable) {
+        return ResponseEntity.ok(this.service.findAll(spec, pageable).map(SimpleFoundationDTO::new));
     }
 
     @PostMapping("register")
     public ResponseEntity<BaseFoundationDTO> create(@Valid @RequestBody FoundationRequest request, @Current User user) {
         return ResponseEntity.ok(new BaseFoundationDTO(this.service.create(request, user)));
     }
+
 }
