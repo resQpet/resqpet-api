@@ -1,6 +1,7 @@
 package service.domain.entity.foundation;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -8,8 +9,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -17,8 +16,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import service.domain.entity.BaseEntity;
+import service.domain.entity.user.User;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -28,32 +27,28 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@Table(name = "foundation_publication", schema = "RESQPET")
-public class FoundationPublication extends BaseEntity {
+@Table(name = "foundation_publication_comment", schema = "RESQPET")
+public class FoundationPublicationComment extends BaseEntity {
 
-    @NotNull
     @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "FOUNDATION_ID", nullable = false)
-    private Foundation foundation;
+    @JoinColumn(name = "PUBLICATION_ID", nullable = false)
+    private FoundationPublication publication;
 
-    @Size(max = 255)
-    @NotNull
-    @Column(name = "TITLE", nullable = false)
-    private String title;
+    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "USER_ID", nullable = false)
+    private User user;
 
-    @NotNull
     @Column(name = "CONTENT", nullable = false)
     private String content;
 
-    @Column(name = "EVENT_DATE")
-    private LocalDate eventDate;
-
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy = "publication")
-    private List<FoundationPublicationImage> images;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PARENT_COMMENT_ID")
+    private FoundationPublicationComment parentComment;
 
-    @OneToMany(mappedBy = "publication")
-    private List<FoundationPublicationComment> comments;
+    @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FoundationPublicationComment> replies;
 
 }

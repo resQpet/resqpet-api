@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import service.domain.dto.BaseDTO;
 import service.domain.entity.foundation.FoundationPublication;
+import service.domain.entity.foundation.FoundationPublicationComment;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,6 +28,7 @@ public class FoundationPublicationDTO extends BaseDTO {
     private String imageUrl;
     private LocalDate eventDate;
     private List<FoundationPublicationImageDTO> images;
+    private List<FoundationPublicationCommentDTO> comments;
 
     public FoundationPublicationDTO(FoundationPublication publication) {
         super(publication);
@@ -34,8 +36,9 @@ public class FoundationPublicationDTO extends BaseDTO {
             this.foundation = new BaseFoundationDTO(publication.getFoundation());
             this.title = publication.getTitle();
             this.content = publication.getContent();
-            this.images = publication.getFoundationPublicationImages().stream().map(FoundationPublicationImageDTO::new).toList();
             this.eventDate = publication.getEventDate();
+            this.images = publication.getImages().stream().map(FoundationPublicationImageDTO::new).toList();
+            this.comments = publication.getComments().stream().map(FoundationPublicationCommentDTO::new).toList();
         }
     }
 
