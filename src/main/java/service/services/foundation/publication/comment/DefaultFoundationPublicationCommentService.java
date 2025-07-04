@@ -2,6 +2,8 @@ package service.services.foundation.publication.comment;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import service.domain.entity.foundation.FoundationPublication;
@@ -49,5 +51,11 @@ public class DefaultFoundationPublicationCommentService extends DefaultBaseServi
                 .user(user)
                 .build();
         return this.create(comment);
+    }
+
+    @Override
+    public Page<FoundationPublicationComment> findAllByPublication(Long publicationId, Pageable pageable) {
+        final FoundationPublication publication = this.publicationService.findById(publicationId);
+        return this.repository.findAllByPublication(publication, pageable);
     }
 }
